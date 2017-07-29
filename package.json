@@ -4,8 +4,13 @@
   "description": "The theme which you must be overdosed.",
   "private": true,
   "scripts": {
-    "clone": "git clone https://github.com/spoqa/spoqa-han-sans ./source/libs/spoqa-han-sans;git clone https://github.com/hyunseob/noto-sans-kr ./source/libs/noto-sans-kr",
-    "build": "node_modules/.bin/uglifyjs ./source/js/dynamicMenu.js -m -o ./source/js/dynamicMenu.min.js;node_modules/.bin/uglifyjs ./source/js/sharer.js -m -o ./source/js/sharer.min.js;cat ./source/js/dynamicMenu.min.js ./source/js/sharer.min.js > ./source/js/index.min.js"
+	"clone-spoqa" : "git clone https://github.com/spoqa/spoqa-han-sans ./source/libs/spoqa-han-sans",
+	"clone-notosans" : "git clone https://github.com/hyunseob/noto-sans-kr ./source/libs/noto-sans-kr",
+    "build-dynamicMenu": "node_modules/.bin/uglifyjs ./source/js/dynamicMenu.js -m -o ./source/js/dynamicMenu.min.js",
+    "build-share": "node_modules/.bin/uglifyjs ./source/js/sharer.js -m -o ./source/js/sharer.min.js",
+    "build-index" : "cat ./source/js/dynamicMenu.min.js ./source/js/sharer.min.js > ./source/js/index.min.js",
+    "clone": "npm run clone-spoqa && npm run clone-notosans",
+    "build" : "npm run build-dynamicMenu && npm run build-share && npm run build-index"
   },
   "dependencies": {},
   "devDependencies": {
